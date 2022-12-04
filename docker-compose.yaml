@@ -21,7 +21,7 @@ services:
       context: .
       dockerfile: ./docker/nginx/Dockerfile
     volumes:
-    - ./public:/usr/src/app/public
+      - ./public:/usr/src/app/public
     ports:
       - 8000:80
     depends_on:
@@ -34,20 +34,18 @@ services:
 
   sharply_db:
     container_name: sharply_db
-    image: mysql:8.0.20
+    image: postgres:10.1
     restart: always
     volumes:
       - ./storage/db-data:/var/lib/mysql
     ports:
-      - 52000:32769
+      - 5432:5432
     environment:
-      MYSQL_DATABASE: sharply
-      MYSQL_ROOT_PASSWORD: 
-      MYSQL_USER: root
-      MYSQL_PASSWORD: 
+      POSTGRES_DB: sharply
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     networks:
       - app_network
-
 networks:
   app_network:
     driver: bridge

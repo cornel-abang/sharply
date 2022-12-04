@@ -1,19 +1,18 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\InitController;
 use Illuminate\Support\Facades\Route;
 
 /*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
+* The api/init endpoint starts off a user's session on the app
 */
+Route::get('init', [InitController::class, 'startSession'])->name('init');
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+/** Appointments */
+Route::prefix('appointments')->name('appointments')->group(
+    function () {
+        Route::post('/', [AppointmentController::class, 'scheduleAppointment'])
+            ->name('.schedule');
+    }
+);
