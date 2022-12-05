@@ -12,6 +12,6 @@ class AppointmentsService
     */
     public function create(array $data): ?Appointment
     {
-        return null;
+        return Appointment::create($data);
     }
 }
