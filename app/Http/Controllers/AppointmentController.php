@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AppointmentRequest;
+use App\Http\Requests\AppointmentUpdateRequest;
 use App\Services\AppointmentsService;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -47,4 +48,27 @@ class AppointmentController extends Controller
             200
         );
     }
+
+    /** 
+     * Create any type of appointment for a user
+     * 
+     * @param AppointmentRequest $request 
+     * @param AppointmentsService $service 
+    */
+    public function updateAppointment(
+        AppointmentUpdateRequest $request, 
+        string $appointment_id,
+        AppointmentsService $service
+    ): Response {
+        $updated = $service->updateAppointment($request->validated(), $appointment_id);
+
+        return response()->json(
+            [
+                'data'    => $updated,
+                'success' => true
+            ]
+            ,200
+        );
+    }
+
 }

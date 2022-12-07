@@ -28,4 +28,25 @@ class AppointmentsService extends BaseService
             'appointments' => $user->appointments
         ];
     }
+
+    /** 
+    * Update a single apppointment
+    * @param array $data
+    * @param string $id
+    */
+    public function updateAppointment( array $data, string $id): ?Appointment
+    {
+        $this->getAppointment($id)->update($data);
+        
+        return $this->getAppointment($id);
+    }
+
+    /** 
+    * Fetch a single appointment for a particular user session
+    * @param string $id
+    */
+    public function getAppointment(string $id): ?Appointment
+    {
+        return Appointment::findOrFail($id);
+    }
 }

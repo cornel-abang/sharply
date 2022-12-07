@@ -22,6 +22,8 @@ Route::middleware(['api.auth'])
                             ->withoutMiddleware('api.auth');
                         Route::get('/{cookie_id}', [AppointmentController::class, 'getAppointments'])
                             ->name('.retrieve');
+                        Route::put('/{appointment_id}', [AppointmentController::class, 'updateAppointment'])
+                            ->name('.update');
                     }
                 );
         }
