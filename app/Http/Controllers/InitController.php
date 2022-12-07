@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HelpCentre;
 use App\Models\User;
 use App\Services\SessionService;
 use Illuminate\Http\Request;
@@ -25,7 +26,10 @@ class InitController extends Controller
         }
 
         return response()->json(
-            $sessionData ?? $service->createUserSession(),
+            [
+                'data'    => $sessionData ?? $service->createUserSession(),
+                'success' => true
+            ],
             200
         );
     }

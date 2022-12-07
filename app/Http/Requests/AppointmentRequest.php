@@ -14,8 +14,8 @@ class AppointmentRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            'help_centre_id' => 'required|string|exists:help_centres',
-            'cookie_id'      => 'required|string|exists:users',
+            'help_centre_id' => 'required|string|exists:help_centres,id',
+            'cookie_id'      => 'required|string|exists:users,id',
             'type'           => 'required|string',
             'day'            => 'required|string',
             'time'           => 'required|string',

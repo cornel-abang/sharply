@@ -10,9 +10,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('init', [InitController::class, 'startSession'])->name('init');
 
 /** Appointments */
-Route::prefix('appointments')->name('appointments')->group(
-    function () {
-        Route::post('/', [AppointmentController::class, 'scheduleAppointment'])
-            ->name('.schedule');
-    }
-);
+Route::middleware(['api.auth'])
+    ->group(
+        function () {
+            Route::prefix('appointments')
+                ->name('appointments')
+                ->group(
+                    function () {
+                        Route::post('/', [AppointmentController::class, 'scheduleAppointment'])
+                            ->name('.schedule')
+                            ->withoutMiddleware('api.auth');
+                        Route::get('/{cookie_id}', [AppointmentController::class, 'getAppointments'])
+                            ->name('.retrieve');
+                    }
+                );
+        }
+    );

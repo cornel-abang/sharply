@@ -46,13 +46,4 @@ COPY ./docker/php/laravel.ini /usr/local/etc/php/conf.d/laravel.ini
 
 WORKDIR /usr/src/app
 
-COPY composer.json composer.json
-
-RUN composer install --optimize-autoloader --no-dev; \
-    php artisan key:generate --force; \
-    php artisan migrate; \
-    php artisan db:seed; \
-    php artisan cache:clear; \
-    php artisan config:cache; \
-    php artisan route:cache; \
-    chown -R www-data:www-data /var/www;
+RUN chown -R www-data:www-data .
