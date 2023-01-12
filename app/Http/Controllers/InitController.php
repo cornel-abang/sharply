@@ -14,7 +14,7 @@ class InitController extends Controller
      * Check if the user has an active session.
      * Create one if not.
      * 
-     * @param Request $request 
+     * @param Request        $request 
      * @param SessionService $service 
      */
     public function startSession(Request $request, SessionService $service): Response
@@ -28,6 +28,25 @@ class InitController extends Controller
         return response()->json(
             [
                 'data'    => $sessionData ?? $service->createUserSession(),
+                'success' => true
+            ],
+            200
+        );
+    }
+
+    /** 
+     * Generate and return any number of Help Centres.
+     * 
+     * FOR TEST PURPOSES ONLY
+     * 
+     * @param int            $count 
+     * @param SessionService $service 
+     */
+    public function returnTestHelpCentres(int $count = 1, SessionService $service): Response
+    {
+        return response()->json(
+            [
+                'data'    => $service->createTestHelpCentres($count),
                 'success' => true
             ],
             200

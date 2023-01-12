@@ -3,13 +3,14 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 
 class AuthenticateApi
 {
-    public function handle(Request $request, Closure $next): RedirectResponse|JsonResponse
+    public function handle(Request $request, Closure $next): JsonResponse | Response
     {
         if (!$request->cookie_id) {
             return response()->json(['error' => 'Please provide a valid Cookie ID'], 401);

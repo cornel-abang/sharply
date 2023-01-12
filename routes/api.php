@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('init', [InitController::class, 'startSession'])->name('init');
 
+/*
+* FOR TEST PURPOSE ONLY
+* Create any number of Help Centres
+*/
+Route::get('init/generate-centres/{count?}', [InitController::class, 'returnTestHelpCentres'])->name('centres');
+
 /** Appointments */
 Route::middleware(['api.auth'])
     ->group(

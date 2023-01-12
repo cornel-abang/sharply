@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Models\User;
+use App\Models\HelpCentre;
+use Illuminate\Database\Eloquent\Collection;
 
 class SessionService
 {
@@ -19,12 +21,20 @@ class SessionService
      * Create a new active session for the user
      * 
      * We use factory to create because:
-     * we don't receieve any data from the user yet
+     * we don't get any data from the user yet
      * so we need to create random data to hold user session
      * until the user decides to produce such data
     */
     public function createUserSession()
     {
         return User::factory()->create();
+    }
+
+    /** 
+    * @param int $count
+    */
+    public function createTestHelpCentres(int $count): Collection
+    {
+        return HelpCentre::factory()->count($count)->create();
     }
 }

@@ -27,8 +27,8 @@ class AppointmentController extends Controller
             [
                 'data'    => $appointment,
                 'success' => true
-            ]
-            ,200
+            ],
+            200
         );
     }
 
