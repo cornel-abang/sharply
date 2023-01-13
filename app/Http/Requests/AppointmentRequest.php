@@ -15,7 +15,7 @@ class AppointmentRequest extends BaseRequest
     {
         return [
             'help_centre_id' => 'required|string|exists:help_centres,id',
-            'cookie_id'      => 'required|string|exists:users,id',
+            'user_id'        => 'required|string|exists:users,id',
             'type'           => 'required|string',
             'day'            => 'required|string',
             'time'           => 'required|string',
@@ -32,11 +32,11 @@ class AppointmentRequest extends BaseRequest
     public function messages()
     {
         return [
-            'appt_for.required'   => 'Kindly indicate who you are making this appointment for',
-            'appt_for.string'     => 'Appointment for should be text',
-            'cookie_id.string'    => 'The user token should be text',
-            'cookie_id.required'  => 'No user token found in this request',
-            'cookie_id.exists'    => 'This user does not exist on our database',
+            'appt_for.required' => 'Kindly indicate who you are making this appointment for',
+            'appt_for.string'   => 'Appointment for should be text',
+            'user_id.string'    => 'The user token should be text',
+            'user_id.required'  => 'No user token found in this request',
+            'user_id.exists'    => 'This user does not exist on our database',
         ];
     }
 }

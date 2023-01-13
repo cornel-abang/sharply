@@ -1,16 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\AppointmentRequest;
-use App\Http\Requests\AppointmentUpdateRequest;
-use App\Services\AppointmentsService;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Services\AppointmentsService;
+use App\Http\Requests\AppointmentRequest;
 use Symfony\Component\HttpFoundation\Response;
+use App\Http\Requests\AppointmentUpdateRequest;
 
 class AppointmentController extends Controller
 {
     /** 
+     * POST: api/appointments
      * Create any type of appointment for a user
      * 
      * @param AppointmentRequest $request 
@@ -19,9 +21,9 @@ class AppointmentController extends Controller
     public function scheduleAppointment(
         AppointmentRequest $request, 
         AppointmentsService $service
-    ): Response {
-        $data = array_merge(['user_id' => $request->cookie_id], $request->validated());
-        $appointment = $service->create($data);
+    ): Response 
+    {
+        $appointment = $service->create($request->validated());
 
         return response()->json(
             [
@@ -33,12 +35,13 @@ class AppointmentController extends Controller
     }
 
     /** 
+     * GET: api/appointments/{user_id}
      * Retrieve all appointments for a user
      * 
      * @param string $cookie_id 
      * @param AppointmentsService $service 
     */
-    public function getAppointments(string $cookie_id, AppointmentsService $service): Response
+    public function getAppointments(string $user_id, AppointmentsService $service): Response
     {  
         return response()->json(
             [
@@ -50,6 +53,7 @@ class AppointmentController extends Controller
     }
 
     /** 
+     * PUT: api/appointments/{appointment_id}
      * Create any type of appointment for a user
      * 
      * @param AppointmentRequest $request 

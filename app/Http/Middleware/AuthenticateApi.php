@@ -12,7 +12,7 @@ class AuthenticateApi
 {
     public function handle(Request $request, Closure $next): JsonResponse | Response
     {
-        if (!$request->cookie_id) {
+        if (!$request->user_id) {
             return response()->json(['error' => 'Please provide a valid Cookie ID'], 401);
         }
 

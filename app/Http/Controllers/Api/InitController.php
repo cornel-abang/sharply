@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\HelpCentre;
 use App\Models\User;
-use App\Services\SessionService;
+use App\Models\HelpCentre;
 use Illuminate\Http\Request;
+use App\Services\SessionService;
+use App\Http\Controllers\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
 class InitController extends Controller

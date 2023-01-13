@@ -29,7 +29,7 @@ class AppointmentUpdateRequest extends BaseRequest
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'appt_for.string'     => 'Appointment for should be text',
