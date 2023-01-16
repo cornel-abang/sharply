@@ -8,6 +8,7 @@ use App\Services\AppointmentsService;
 use App\Http\Requests\AppointmentRequest;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\AppointmentUpdateRequest;
+use App\Http\Requests\SearchHelpCentresRequest;
 
 class AppointmentController extends Controller
 {
@@ -38,14 +39,14 @@ class AppointmentController extends Controller
      * GET: api/appointments/{user_id}
      * Retrieve all appointments for a user
      * 
-     * @param string $cookie_id 
+     * @param string $user_id 
      * @param AppointmentsService $service 
     */
     public function getAppointments(string $user_id, AppointmentsService $service): Response
     {  
         return response()->json(
             [
-                'data'    => $service->fetchAppointments($cookie_id),
+                'data'    => $service->fetchAppointments($user_id),
                 'success' => true
             ],
             200
@@ -72,6 +73,29 @@ class AppointmentController extends Controller
                 'success' => true
             ]
             ,200
+        );
+    }
+
+    /** 
+     * POST: api/appointments/help-centres
+     * Search and retrieve all Help Centres 
+     * according a location string
+     * 
+     * @param string $user_id 
+     * @param string $location_str 
+     * @param AppointmentsService $service 
+    */
+    public function searchAndFetchHelpCentres(
+        SearchHelpCentresRequest $request,
+        AppointmentsService $service
+    ): Response
+    {
+        return response()->json(
+            [
+                'data'    => $service->searchFetchHelpCentres($request->location_str),
+                'success' => true
+            ],
+            200
         );
     }
 

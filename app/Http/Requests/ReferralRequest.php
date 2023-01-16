@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
 class ReferralRequest extends BaseRequest
 {
     public function authorize(): bool
@@ -25,7 +23,7 @@ class ReferralRequest extends BaseRequest
     public function messages(): array
     {
         return [
-            'sex.in'     => 'The sex must be either Male, Female or Unknown'
+            'sex.in' => 'The sex must be either Male, Female or Unknown'
         ];
     }
 }

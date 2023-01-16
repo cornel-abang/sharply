@@ -33,6 +33,8 @@ Route::middleware(['api.auth'])
                             ->name('.retrieve');
                         Route::put('/{appointment_id}', [AppointmentController::class, 'updateAppointment'])
                             ->name('.update');
+                        Route::post('help-centres', [AppointmentController::class, 'searchAndFetchHelpCentres'])
+                            ->name('.help_centres');
                     }
                 );
 

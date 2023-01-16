@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
+use App\Models\HelpCentre;
 use App\Models\Appointment;
+use Illuminate\Database\Eloquent\Collection;
 
 class AppointmentsService extends BaseService
 {
@@ -48,5 +50,14 @@ class AppointmentsService extends BaseService
     public function getAppointment(string $id): ?Appointment
     {
         return Appointment::findOrFail($id);
+    }
+
+    /** 
+    * Search for Help Centres based on a location string
+    * @param string $location_str
+    */
+    public function searchFetchHelpCentres(string $location_str): Collection
+    {
+        return HelpCentre::where('address', 'like', '%'.$location_str.'%')->get();
     }
 }

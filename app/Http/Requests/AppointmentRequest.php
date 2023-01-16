@@ -26,6 +26,9 @@ class AppointmentRequest extends BaseRequest
             'name'           => 'required|string',
             'phone'          => 'required|string',
             'location'       => 'required|string',
+            'optout_sms'     => 'required|boolean',
+            'avoid_calling'  => 'required|boolean',
+            'covid_exposed'  => 'required|boolean'
         ];
     }
 

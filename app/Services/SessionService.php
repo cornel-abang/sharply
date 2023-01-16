@@ -10,11 +10,11 @@ class SessionService
 {
     /** 
     * Get active user session data and return it  
-    * @param string $cookie_id
+    * @param string $user_id
     */
-    public function getUserSessionData(string $cookie_id): ?User
+    public function getUserSessionData(string $user_id): ?User
     {
-        return User::with('appointments')->find($cookie_id);
+        return User::with('appointments')->find($user_id);
     }
 
     /** 
@@ -35,6 +35,6 @@ class SessionService
     */
     public function createTestHelpCentres(int $count): Collection
     {
-        return HelpCentre::factory()->count($count)->create();
+        return HelpCentre::factory(['address' => '50 Daniel Close, Gwarimpa, FCT Abuja'])->count($count)->create();
     }
 }

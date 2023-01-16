@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property string          $name
  * @property string          $phone
  * @property string          $address
- * @property ?string          $image
+ * @property ?string         $image
  * @property CarbonInterface $created_at
  * @property CarbonInterface $updated_at
  */

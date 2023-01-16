@@ -22,8 +22,8 @@ class InitController extends Controller
     {
         $sessionData = null;
 
-        if(!empty($request->cookie_id)){
-            $sessionData =  $service->getUserSessionData($request->cookie_id);
+        if(!empty($request->user_id)){
+            $sessionData =  $service->getUserSessionData($request->user_id);
         }
 
         return response()->json(
