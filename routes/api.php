@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RiskController;
 use App\Http\Controllers\Api\InitController;
 use App\Http\Controllers\Api\ReferralController;
 use App\Http\Controllers\Api\AppointmentController;
@@ -39,16 +40,16 @@ Route::middleware(['api.auth'])
                 );
 
             /** Risk Assessment */
-            // Route::prefix('risk')
-            //     ->name('risk')
-            //     ->group(
-            //         function () {
-            //             Route::post('/', [RiskController::class, 'scheduleAppointment'])
-            //                 ->name('.schedule');
-            //         }
-            //     );
+            Route::prefix('risk')
+                ->name('risk')
+                ->group(
+                    function () {
+                        Route::get('questions', [RiskController::class, 'fetchQuestions'])
+                            ->name('.fetch.questions');
+                    }
+                );
 
-            /** Risk Assessment */
+            /** Referrals */
             Route::prefix('refer')
                 ->name('refer')
                 ->group(

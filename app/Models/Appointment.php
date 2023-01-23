@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
- * @property UuidInterface php artisan make  $id
+ * @property UuidInterface   $id
  * @property string          $type
  * @property string          $day
  * @property string          $time
@@ -30,12 +30,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property string          $population_group
  * @property CarbonInterface $created_at
  * @property CarbonInterface $updated_at
- * @property HelpCentre      $helpCentre
- * @property User            $user
+ * @property HelpCentre      $help_centre_id
+ * @property User            $user_id
  */
 class Appointment extends Model
 {
-    use HasFactory, HasUUID;
+    use HasUUID;
 
     /**
      * @var array<string>

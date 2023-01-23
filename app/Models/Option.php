@@ -10,14 +10,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @property UuidInterface   $id
- * @property string          $name
- * @property string          $phone
- * @property string          $address
- * @property ?string         $image
+ * @property string          $option
+ * @property int             $point
  * @property CarbonInterface $created_at
  * @property CarbonInterface $updated_at
  */
-class HelpCentre extends Model
+class Option extends Model
 {
     use HasFactory;
     use HasUUID;
@@ -25,10 +23,5 @@ class HelpCentre extends Model
     /**
      * @var array<string>
     */
-    protected $fillable = [
-        'name',
-        'phone',
-        'address',
-        'image',
-    ];
+    protected $fillable = ['option', 'point'];
 }
