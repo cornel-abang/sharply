@@ -46,6 +46,8 @@ Route::middleware(['api.auth'])
                     function () {
                         Route::get('questions', [RiskController::class, 'fetchQuestions'])
                             ->name('.fetch.questions');
+                        Route::post('answers', [RiskController::class, 'calculateRisk'])
+                            ->name('.calc.answers');
                     }
                 );
 

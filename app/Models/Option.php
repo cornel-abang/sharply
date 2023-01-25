@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property int             $point
  * @property CarbonInterface $created_at
  * @property CarbonInterface $updated_at
+ * @property Question        $question_id
  */
 class Option extends Model
 {

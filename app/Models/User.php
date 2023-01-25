@@ -2,18 +2,21 @@
 
 namespace App\Models;
 
+use App\Traits\HasUUID;
+use Carbon\CarbonInterface;
+use Ramsey\Uuid\UuidInterface;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use App\Traits\HasUUID;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property UuidInterface   $id
  * @property string          $name
  * @property string          $email
  * @property string          $password
+ * @property string          $dob
  * @property CarbonInterface $created_at
  * @property CarbonInterface $updated_at
  */
@@ -28,6 +31,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'dob'
     ];
 
     /**

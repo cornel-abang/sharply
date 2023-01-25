@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\User;
+use SebastianBergmann\Type\VoidType;
 
 class BaseService 
 {
@@ -14,5 +15,10 @@ class BaseService
     public function mergeUserToRequest(array $data): array
     {
         return array_merge(['user_id' => request()->cookie_id], $data);
+    }
+
+    public function addDOBToUserModel(string $user_id, string $dob): void
+    {
+        $this->resolveUser($user_id)->update(['dob' => $dob]);
     }
 }

@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
 class AppointmentRequest extends BaseRequest
 {
     public function authorize(): bool
@@ -32,7 +30,7 @@ class AppointmentRequest extends BaseRequest
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'appt_for.required' => 'Kindly indicate who you are making this appointment for',
