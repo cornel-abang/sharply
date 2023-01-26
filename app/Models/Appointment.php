@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property bool            $covid_exposed
  * @property string          $covid_vac_status
  * @property string          $population_group
+ * @property string          $email
  * @property CarbonInterface $created_at
  * @property CarbonInterface $updated_at
  * @property HelpCentre      $help_centre_id
@@ -41,14 +42,14 @@ class Appointment extends Model
      * @var array<string>
      */
     protected $fillable = [
-        'type', 'day', 'time',
-        'dob', 'gender_at_birth',
-        'gender_today', 'appt_for',
-        'name', 'phone', 'location',
-        'help_centre_id', 'user_id',
-        'optout_sms', 'avoid_calling',
-        'covid_appt_type', 'covid_exposed',
-        'covid_vac_status', 'population_group'
+        'type','day','time',
+        'dob','gender_at_birth',
+        'gender_today','appt_for',
+        'name','phone','location',
+        'help_centre_id','user_id',
+        'optout_sms','avoid_calling',
+        'covid_appt_type','covid_exposed',
+        'covid_vac_status','population_group','email'
     ];
 
     protected $casts = [
@@ -57,9 +58,9 @@ class Appointment extends Model
         'covid_exposed' => 'boolean'
     ];
 
-    public function helpCentre(): HasOne
+    public function helpCentre(): BelongsTo
     {
-        return $this->hasOne(HelpCentre::class);
+        return $this->belongsTo(HelpCentre::class);
     }
 
     public function user(): BelongsTo
