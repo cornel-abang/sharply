@@ -98,4 +98,26 @@ class AppointmentController extends Controller
         );
     }
 
+    /** 
+     * POST: api/appointments/{appt_date}
+     * Fetch all appointments for the given 
+     * date
+     * 
+     * @param string $appt_date 
+     * @param AppointmentsService $service 
+    */
+    public function fetchAppointments(
+        string $appt_date,
+        AppointmentsService $service
+    ): Response
+    {
+        return response()->json(
+            [
+                'data'    => $service->searchFetchAppointments($appt_date),
+                'success' => true
+            ],
+            200
+        );
+    }
+
 }

@@ -12,6 +12,11 @@ use App\Http\Controllers\Api\AppointmentController;
 Route::get('init', [InitController::class, 'startSession'])->name('init');
 
 /*
+* The api/appointments endpoint fetches all the appointmenrts for a given date
+*/
+Route::get('appointments/{appt_date}', [AppointmentController::class, 'fetchAppointments'])->name('init');
+
+/*
 * FOR TEST PURPOSE ONLY
 * Create any number of Help Centres
 */

@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\HelpCentre;
 use App\Models\Appointment;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 
 class AppointmentsService extends BaseService
@@ -59,5 +60,10 @@ class AppointmentsService extends BaseService
     public function searchFetchHelpCentres(string $location_str): Collection
     {
         return HelpCentre::where('address', 'like', '%'.$location_str.'%')->get();
+    }
+
+    public function searchFetchAppointments(string $appt_date): Collection
+    {
+        return Appointment::whereDate('day', Carbon::parse($appt_date))->get();
     }
 }
