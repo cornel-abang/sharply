@@ -7,6 +7,9 @@ use App\Http\Controllers\Api\ReferralController;
 use App\Http\Controllers\Api\AppointmentController;
 
 /*
+Test server cpanel: https://cpanel-s39.web-hosting.com
+* Sub-domain backend: https://sharply-backend.mentalhealthnaija.com
+* Subdomain frontend: https://sharply.mentalhealthnaija.com
 * The api/init endpoint starts off a user's session on the app
 */
 Route::get('init', [InitController::class, 'startSession'])->name('init');

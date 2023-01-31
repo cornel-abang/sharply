@@ -13,7 +13,7 @@ class HelpCentreFactory extends Factory
             'id'      => Str::uuid(),
             'name'    => 'Help Centre_'.Str::random(10),
             'phone'   => $this->faker->numerify('###-###-####'),
-            'address' => $this->faker->address,
+            'address' => '16 Daniel Gemana Close, Gwarimpa, Abuja, Nigeria',
         ];
     }
 }
