@@ -1,4 +1,4 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/mentigtx/sharply-backend.mentalhealthnaija.com/
+    - export DEPLOYPATH=/home/gfnadiig/gmams.gfnahi.com/
     - /bin/cp -R * $DEPLOYPATH
