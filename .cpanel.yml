@@ -1,4 +1,4 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/gfnadiig/sharply-backend.gfnahi.com/
+    - export DEPLOYPATH=/home/saksbrdx/sharply.kulturewin.com/
     - /bin/cp -R * $DEPLOYPATH
